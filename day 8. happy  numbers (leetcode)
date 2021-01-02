@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+       set<int>s;
+        while(n){
+          int number=powsum(n);
+          if(number==1){
+              return true;
+          } 
+          if(s.find(number)!=s.end()){
+              break;
+          }
+          n=number;  
+          s.insert(number);  
+        }
+    return false;   
+    }
+    int powsum(int n){
+        int i=0;
+        while(n>0){
+            i=((n%10)*(n%10))+i;
+            n=n/10;
+        }
+        return i;
+    }
+};
