@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool search(vector<int>& nums, int target) {
+        int ans=searchinarray(nums,target);
+        if(ans<0){
+            return false;
+        }
+        return true;
+    }
+    int searchinarray(vector<int>& nums, int target) {
+        int n=nums.size();
+        if(n==1 and nums[0]==target){
+            return 0;
+        }
+        auto it=find(nums.begin(),nums.end(),target);
+        if(it!=nums.end()){
+            return abs(it-nums.begin());
+        }
+        return -1;
+    }
+};
