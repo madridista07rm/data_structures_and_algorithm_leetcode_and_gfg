@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+       int arr[26]={0};
+       int n=s.size();
+       for(auto i=0;i<n;i++){
+           int p=s[i]-'a';
+           arr[p]++;
+       }
+        int pos;
+        for(auto i=0;i<n;i++){
+            int p=s[i]-'a';
+            if(arr[p]==1){
+                return i;
+            }
+        }
+        return -1;
+    }
+};
