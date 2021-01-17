@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        int v=0;
+        bst(root,low,high,v);
+        int sum=v;
+        v=0;
+        return sum;
+    }
+    TreeNode* bst(TreeNode* root,int low,int high,int &v){
+        if(root==NULL){
+            return NULL;
+        }
+        bst(root->left,low,high,v);
+        if(root->val>=low and root->val<=high){
+          v+=root->val;  
+        }
+        bst(root->right,low,high,v);
+        return root;
+    }
+   
+};
