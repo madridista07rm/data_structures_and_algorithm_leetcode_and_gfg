@@ -1,0 +1,26 @@
+class Solution {
+   public:
+    bool isBalanced(TreeNode* root) {
+        pair<int,bool>hb;
+        hb=isbal(root);
+        return hb.second;
+    }
+    pair<int,bool>isbal(TreeNode* root){
+        pair<int,bool>p;
+        if(root==NULL){
+            p.first=0;
+            p.second=true;
+            return p;
+        }
+        pair<int,bool>left=isbal(root->left);
+        pair<int,bool>right=isbal(root->right);
+        p.first=max(left.first,right.first)+1;
+        if(abs(left.first-right.first)<=1 and left.second and right.second){
+            p.second=true;
+        }
+        else{
+            p.second=false;
+        }
+        return p;
+    }
+};
