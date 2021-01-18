@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minDiffInBST(TreeNode* root) {
+        int curr=INT_MAX;
+        int pre=INT_MIN;
+        diff(root,curr,pre);
+        return curr;
+    }
+    void diff(TreeNode* root,int & curr,int & pre){
+        if(root==NULL){
+            return ;
+        }
+        diff(root->left,curr,pre);
+        if(pre!=INT_MIN)
+	       {
+		    curr=min(curr,root->val-pre);
+	       }
+	    pre=root->val;
+        diff(root->right,curr,pre);
+    }
+};
