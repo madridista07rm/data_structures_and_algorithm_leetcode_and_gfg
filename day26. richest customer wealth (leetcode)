@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maximumWealth(vector<vector<int>>& accounts) {
+        int gret=0;
+        
+        int n=accounts.size();
+        for(auto i:accounts){
+            int curr=0;
+            for(auto j:i){
+                curr+=j;
+            }
+            gret=max(curr,gret);
+        }
+        return gret;
+    }
+};
