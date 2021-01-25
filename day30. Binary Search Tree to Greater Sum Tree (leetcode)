@@ -1,0 +1,18 @@
+class Solution {
+public:
+    TreeNode* bstToGst(TreeNode* root) {
+        int s=0;
+        bst(root,s);
+        return root;
+    }
+    int bst(TreeNode* & root ,int & s){
+        if(root==NULL){
+            return s;
+        }
+        int r=bst(root->right,s);
+        s=r+root->val;
+        root->val=s;
+        int l=(bst(root->left,s));
+        return s;
+    }
+};
