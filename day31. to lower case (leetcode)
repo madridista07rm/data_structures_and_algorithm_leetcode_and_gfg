@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string toLowerCase(string str) {
+        string s;
+        char aa='a';
+        for(auto i:str){
+           if(int(i)>=int(aa)){
+               s+=i;
+           }
+           else{
+               if(int(i)>64){
+                  int j=int(i)+32;
+                  s+=char(j);  
+               }
+               else{
+                   s+=i;
+               }
+           }
+        }
+        return s;
+    }
+};
