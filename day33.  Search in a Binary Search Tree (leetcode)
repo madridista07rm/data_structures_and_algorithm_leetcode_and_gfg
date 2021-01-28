@@ -1,0 +1,26 @@
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        TreeNode* a=sbst(root,a,val);
+        if(a){
+            return a;
+        }
+        return NULL;
+    }
+    TreeNode*sbst(TreeNode* root,TreeNode*a,int val){
+        if(root==NULL){
+            return NULL;
+        }
+        if(root->val==val){
+            return root;
+        }
+        else if(root->val>val){
+           a= sbst(root->left,a,val);
+        }
+        else{
+            a=sbst(root->right,a,val);
+        }
+        return a;
+        
+    }
+};
