@@ -1,0 +1,34 @@
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        ListNode* a=head;
+        if(head==NULL){
+            return;
+        }
+        int n=0;
+        while(a->next!=NULL){
+            a=a->next;
+            n++;
+        }
+        reo(head,n);
+    }
+    
+    void reo(ListNode* &root,int n){
+        if(root==NULL or n<0){
+            return;
+        }
+        ListNode*c=root->next;
+        ListNode*d=root;
+        while(c!=NULL and c->next!=NULL){
+            c=c->next;
+            d=d->next;
+        } 
+        d->next=NULL;
+        ListNode*b=root->next;
+        root->next=c;
+        reo(b,n-2);
+        if(c!=b){
+            c->next=b;
+        }
+    }
+};
