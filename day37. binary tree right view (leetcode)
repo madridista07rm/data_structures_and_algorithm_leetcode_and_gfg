@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        int maxlevel=-1;
+        int level=0;
+        vector<int>v;
+        rview(root,level,maxlevel,v);
+        return v;
+    }
+    void rview(TreeNode* root,int level,int &maxlevel,vector<int>&v){
+        if(root==NULL){
+            return ;
+        }
+        if(maxlevel<level){
+            v.push_back(root->val);
+            maxlevel=level;
+        }
+        rview(root->right,level+1,maxlevel,v);
+        rview(root->left,level+1,maxlevel,v);
+    }
+};
