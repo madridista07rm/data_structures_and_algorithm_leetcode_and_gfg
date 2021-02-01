@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        pair<int,int>a=fastdai(root);
+        return a.second;
+    }
+    pair<int,int>fastdai(TreeNode* root){
+        pair<int,int> p;
+        
+        if(root==NULL){
+            p.first=p.second=0;
+            return p;
+        }
+        pair<int,int>left=fastdai(root->left);
+        pair<int,int>right=fastdai(root->right);
+        
+        p.first=max(left.first,right.first)+1;
+        p.second=max(left.first+right.first,max(left.second,right.second));
+        return p;
+    }
+};
