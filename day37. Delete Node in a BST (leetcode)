@@ -1,0 +1,47 @@
+class Solution {
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+    
+        if(root==NULL){
+            return NULL;
+        }
+
+        if(key<root->val){
+            root->left=deleteNode(root->left,key);
+            return root;
+        }
+        if(key>root->val){
+            root->right=deleteNode(root->right,key);
+            return root;
+        }
+        if(root->val==key){
+            //case 1.root have no children
+            if(root->left==NULL and root->right==NULL){
+            delete root;
+            return NULL;
+            }   
+            //case 2. root have one children
+            if(root->left!=NULL and root->right==NULL){
+            TreeNode*temp=root->left;
+            delete root;
+            return temp;
+            }
+            
+            if(root->right!=NULL and root->left==NULL){
+            TreeNode*temp=root->right;
+            delete root;
+            return temp;
+            } 
+            //case 3. root have 2 children
+            TreeNode*replace=root->right;
+            while(replace->left!=NULL){
+                replace=replace->left;
+            }
+            root->val=replace->val;
+            root->right=deleteNode(root->right,replace->val);
+            return root;
+            
+        }
+        return NULL;
+    }
+};
