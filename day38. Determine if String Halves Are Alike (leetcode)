@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool halvesAreAlike(string s) {
+        int n=s.length();
+        int m=n/2;
+        int s1=0,s2=0;
+        for(auto i=0;i<m;i++){
+            if(s[i]=='a' or s[i]=='e' or s[i]=='i' or s[i]=='o' or s[i]=='u'){
+                s1++;
+            }
+            else if(s[i]=='A' or s[i]=='E' or s[i]=='I' or s[i]=='O' or s[i]=='U' ){
+                s1++;
+            }
+        }
+        
+        for(auto i=m;i<n;i++){
+            if(s[i]=='a' or s[i]=='e' or s[i]=='i' or s[i]=='o' or s[i]=='u'){
+                s2++;
+            }
+            else if(s[i]=='A' or s[i]=='E' or s[i]=='I' or s[i]=='O' or s[i]=='U' ){
+                s2++;
+            }
+        }
+        if(s1==s2){
+            return true;
+        }
+        return false;
+    }
+};
