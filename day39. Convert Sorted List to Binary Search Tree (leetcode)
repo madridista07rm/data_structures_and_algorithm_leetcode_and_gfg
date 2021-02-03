@@ -1,0 +1,22 @@
+class Solution {
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        vector<int>v;
+        while(head!=NULL){
+            v.push_back(head->val);
+            head=head->next;
+        }
+        TreeNode*a=tobst(v,0,v.size()-1);
+        return a;
+    }
+    TreeNode* tobst(vector<int>v,int s,int e){
+        if(s>e){
+            return NULL;
+        }
+        int mid=(s+e)/2;
+        TreeNode*b=new TreeNode (v[mid]);
+        b->left=tobst(v,s,mid-1);
+        b->right=tobst(v,mid+1,e);
+        return b;
+    }
+};
