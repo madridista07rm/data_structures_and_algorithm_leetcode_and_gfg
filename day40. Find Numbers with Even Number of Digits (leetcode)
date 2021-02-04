@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int findNumbers(vector<int>& nums) {
+        int n=nums.size();
+        int counter=0;
+        for(auto i:nums){
+            count(i,counter);
+        }
+        return counter;
+    }
+    void count(int n,int &counter){
+        int curr=0;
+        while(n>0){
+            n=n/10;
+            curr++;
+        }
+        if(curr%2==0){
+            counter++;
+        }
+    }
+};
