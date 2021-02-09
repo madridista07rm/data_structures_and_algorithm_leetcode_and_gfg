@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int busyStudent(vector<int>& startTime, vector<int>& endTime, int queryTime) {
+        vector<pair<int,int>>v;
+        for(int i=0;i<startTime.size();i++){
+            pair<int,int>p;
+            p.first=startTime[i];
+            p.second=endTime[i];
+            v.push_back(p);
+        }
+        int ans=0;
+        for(auto i:v){
+            if(i.first<=queryTime and i.second>=queryTime){
+                ans++;
+            }
+        }
+        return ans;
+    }
+};
