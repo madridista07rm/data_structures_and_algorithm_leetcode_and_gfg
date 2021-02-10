@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>>v;
+        vector<int>extra;
+        csum(v,extra,0,target,candidates);
+        return v;
+    }
+    void csum(vector<vector<int>>&v,vector<int>&extra,int i,int target,vector<int>candidates){
+        if(i==candidates.size()){
+            if(target==0){
+                v.push_back(extra);
+            }
+            return;
+        }
+        if(candidates[i]<=target){
+            extra.push_back(candidates[i]);
+            csum(v,extra,i,target-candidates[i],candidates);
+            extra.pop_back();
+        }
+        csum(v,extra,i+1,target,candidates);
+    }
+};
