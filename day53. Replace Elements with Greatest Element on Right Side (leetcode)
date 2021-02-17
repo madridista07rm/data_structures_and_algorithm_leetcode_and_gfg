@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> replaceElements(vector<int>& arr) {
+        int n=arr.size()-1;
+        vector<int>v;
+        v.push_back(-1);
+        int i=0;
+        while(n>0){
+            if(arr[n]>v[i]){
+                v.push_back(arr[n]);
+            }
+            else{
+                v.push_back(v[i]);
+            }
+            n--;
+            i++;
+        }
+        reverse(v.begin(),v.end());
+        return v;
+    }
+};
