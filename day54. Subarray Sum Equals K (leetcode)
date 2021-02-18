@@ -1,0 +1,23 @@
+class Solution {
+public:
+int subarraySum(vector<int>& nums, int k) {
+    int cnt = 0 , sum = 0;
+
+    map<int, int>freq;
+    
+    for(auto it:nums)
+    {
+        sum = sum+it;
+        if(sum==k)
+        {
+            cnt++;
+        }
+        if(freq.find(sum-k)!=freq.end())
+        {
+            cnt = cnt+freq[sum-k];
+        }
+        freq[sum] = freq[sum]+1;
+    }
+    return cnt;
+   }
+};
