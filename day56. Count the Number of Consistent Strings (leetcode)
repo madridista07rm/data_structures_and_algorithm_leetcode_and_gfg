@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        
+        int arr[256]={0};
+        for(auto i=0;i<allowed.length();i++){
+            ++arr[allowed[i]];
+        }
+        int ans=0;
+        for(auto i:words){
+            bool a=true;
+            for(int j=0;j<i.length();j++){
+                if(arr[i[j]]==0){
+                    a=false;
+                    break;
+                }
+            }
+            if(a==true){
+                ++ans;
+            }
+        }
+        return ans;
+    }
+};
