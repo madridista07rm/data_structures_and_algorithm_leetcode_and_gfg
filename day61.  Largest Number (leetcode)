@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        int n=nums.size();
+        vector<string>v;
+        
+        //first convert integer into string and save them in vector
+        for(auto i:nums){
+            string s=to_string(i);
+            v.push_back(s);
+        }
+        string ans;
+        
+        //sort the string by comparision
+        sort(v.begin(),v.end(),comparitor);
+        
+        //add all strings into one
+        for(auto i:v){
+            ans+=i;
+        }
+        
+        //if the starting char is 0 then just return 0 otherwise return ans
+        if(ans[0]=='0'){
+            string a="0";
+            return a;
+        }
+        return ans;
+    }
+    static bool comparitor(string a,string b){
+        if(a+b>b+a){
+            return true;
+        }
+        return false;
+    }
+};
