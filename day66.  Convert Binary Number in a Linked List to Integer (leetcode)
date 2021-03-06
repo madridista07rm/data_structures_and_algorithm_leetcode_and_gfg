@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int getDecimalValue(ListNode* head) {
+       vector<int>v;
+       ListNode* a=head;
+       int n;
+       while(a!=NULL){
+           v.push_back(a->val);
+           a=a->next;
+           n++;
+       } 
+        int no=0;
+        reverse(v.begin(),v.end());
+        for(auto i=0;i<v.size();i++){
+            no+=v[i]*pow(2,i);
+        }
+        return no;
+    }
+};
