@@ -1,0 +1,25 @@
+class Solution {
+public:  
+    static bool compare(int a,int b){
+        int x=0,y=0;
+        int q=a;
+        int p=b;
+        while(a>0){
+            a=a&(a-1);
+            x++;
+        }
+        while(b>0){
+            b=b&(b-1);
+            y++;
+        }
+        if(x==y){
+            return(q<p);
+        }
+        return (x<y);
+    }
+    vector<int> sortByBits(vector<int>& arr) {
+        stable_sort(arr.begin(),arr.end(),compare);
+        return arr;
+    }
+
+};
